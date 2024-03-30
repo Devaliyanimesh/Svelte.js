@@ -1,0 +1,118 @@
+1.React:
+Declarative Approach: React uses a declarative approach where you define the UI based on the current state, and React takes care of updating the DOM efficiently when the state changes.
+Virtual DOM: React maintains a virtual DOM, which is a lightweight representation of the actual DOM. When the state changes, React computes the difference between the current virtual DOM and the new one, and then efficiently updates only the parts of the actual DOM that have changed.
+JSX Syntax: React uses JSX syntax, which allows you to write HTML-like code directly within JavaScript.
+2.Svelte:
+Compiler-based Approach: Svelte takes a compiler-based approach where the framework compiles your code into highly optimized JavaScript at build time. This means that there's no virtual DOM in Svelte; instead, the framework generates imperative code that directly manipulates the DOM when the state changes.
+No Virtual DOM: Since Svelte doesn't use a virtual DOM, it can produce smaller bundle sizes and potentially faster runtime performance compared to virtual DOM-based frameworks like React.
+HTML-like Syntax with Reactive Statements: Svelte uses an HTML-like syntax for defining components, and it provides reactive statements that automatically update the DOM when the relevant state changes.
+3.main benifitm use svelt.js
+-Performance: Svelte's compiler generates highly optimized JavaScript code that directly manipulates the DOM without the overhead of a virtual DOM. This can lead to faster initial load times, smoother animations, and better runtime performance compared to frameworks that rely on virtual DOM diffing algorithms.
+
+-Small Bundle Sizes: Svelte's compiler analyzes your code and only includes the necessary code in the final bundle, resulting in smaller bundle sizes compared to frameworks that include additional runtime libraries. This can lead to faster download times for users, especially on slower networks or mobile devices.
+
+-Developer Experience: Svelte's syntax is designed to be simple and intuitive, which can lead to a more pleasant developer experience. The framework encourages clean, readable code and provides features like reactive statements and scoped styles to help developers build complex UIs with ease.
+
+-Reactivity: Svelte's reactive programming model allows developers to create components that automatically update the DOM in response to changes in state variables. This can lead to more predictable and maintainable code compared to frameworks that require manual manipulation of the DOM or state management libraries.
+
+-Easy Learning Curve: Svelte's syntax and concepts are relatively straightforward, making it easy for developers to learn and get started with building applications. The framework provides clear documentation and tutorials to help developers ramp up quickly.
+
+-Growing Ecosystem: While Svelte's ecosystem may not be as mature as some other frameworks like React or Vue.js, it is steadily growing, with an increasing number of libraries, tools, and community contributions. As more developers adopt S
+4. svelt and sveltkit diffrent
+Svelte:
+
+Svelte is a front-end JavaScript framework for building user interfaces. It's focused on providing a highly efficient way to write reactive, component-based UIs.
+With Svelte, you write your components using Svelte syntax, which is similar to HTML with added features for data binding, event handling, and reactive updates.
+Svelte compiles your components into highly optimized JavaScript code that directly manipulates the DOM at runtime, without the need for a virtual DOM.
+While Svelte is excellent for building standalone components or small applications, it lacks certain features needed for larger-scale projects, such as routing and server-side rendering.
+SvelteKit:
+
+SvelteKit is the official framework for building Svelte applications. It provides additional features and tools on top of Svelte to help you build full-fledged web applications.
+SvelteKit includes features such as routing, server-side rendering (SSR), code splitting, and static site generation (SSG). These features make it easier to build complex, SEO-friendly web applications with Svelte.
+SvelteKit builds on the same principles as Svelte, but it adds more structure and conventions for organizing your code and handling common web development tasks.
+SvelteKit is designed to be highly flexible, allowing you to choose the best approach for your project, whether it's server-rendered pages, client-side rendering, or static generation.
+SvelteKit is still in active development at the time of writing, with new features and improvements being added regularly.
+
+5.Text binding
+<script>
+  export let name;
+</script>
+<p>my name is{name}</p>
+
+6.html binding
+<script>
+  export let name;
+
+  let chek = `<a href="" onclick="alert('ni nimesh')"> win prize </a>1`;
+</script>
+
+<p>my name is{name}</p>
+<p>{@html chek}</p>
+
+7.binding attribute
+<script>
+  let id="name"
+  const disabled=true
+</script>
+
+
+<p {id} >my name is nimesh</p>
+<button  {disabled}>add</button>
+7.binding class
+<script>
+ const bg='danger'
+ const promted = true
+</script>
+
+
+<p class={bg}>nimesh</p>
+<p class={promted?'prometed':''}>nimesh devaliya</p>
+<!-- conditional rendering -->
+<p class:prometed={promted}>devaliya nimesh</p>
+<!--  class: classname=  true/false -->
+<style>
+  .danger{
+    background-color: aqua;
+  }
+  .prometed{
+   font-style: italic;
+   font-size: larger;
+  }
+</style>
+
+8.conditional rendring
+<script>
+  let count=8
+</script>
+{#if count ===0}
+  <p>Number is {count}</p>
+  {:else if count===5}
+  <p>count is 5</p>
+  {:else if count >=5}
+  <p>5 greterthen value</p>
+  {:else }
+  <p>number is {count}</p>
+{/if}
+
+9.list rendering
+<script>
+  let list = ["parva", "nimesh", "anaya"];
+  let object = [
+    { firstname: "gajjar", lastname: "parva" },
+    { firstname: "devaliya", lastname: "Nimesh" },
+    { firstname: "patel", lastname: "anaya" },
+  ];
+</script>
+
+<ul>
+  {#each list as list, index}
+    <li>{index + 1}.{list}</li>
+  {/each}
+</ul>
+<ul>
+  {#each object as list, i}
+    <li>{i + 1}. surname:{list.firstname},Name:{list.lastname}</li>
+  {/each}
+</ul>
+
+
