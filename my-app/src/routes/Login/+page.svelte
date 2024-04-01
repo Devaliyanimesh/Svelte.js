@@ -9,6 +9,7 @@
 
     let check = JSON.parse(localStorage.getItem("register"));
     if (check.email === value.email && check.password === value.password) {
+      localStorage.setItem("login",JSON.stringify(value))
       alert("Login successful!");
     } else {
       alert("Invalid email or password");

@@ -1,5 +1,7 @@
 <script>
   import logo from "./../img/Louis-Vuitton-Logo+2021-removebg-preview.png";
+  import { goto } from "$app/navigation";
+
 </script>
 
 <header>
@@ -9,7 +11,7 @@
   <ul>
     <li>Home</li>
     <li>About</li>
-    <li>Services</li>
+    <li on:click={goto("/Product")} >product</li>
     <li>Contact Us</li>
   </ul>
   <div class="login">
