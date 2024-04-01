@@ -16,6 +16,17 @@
 
   // Function to add item to cart
   function additemHandler(item) {
+    // Find the index of the item in the cart
+    const index = selectData.findIndex((e) => e.id === item.id);
+
+    // If the item is already in the cart, increment the quantity
+    if (index !== -1) {
+      selectData[index].qty++;
+    } else {
+      // If the item is not in the cart, add it with quantity 1
+      selectData = [...selectData, { ...item, qty: 1 }];
+    }
+
     // Find the matched product data based on ID
     let matchdata = $productData.find((e) => e.id === item.id);
 
@@ -23,9 +34,6 @@
     if (matchdata.totalqty > 0) {
       // Decrement totalqty of the matched product
       matchdata.totalqty--;
-
-      // Add the item to the cart
-          selectData = [...selectData, item];
 
       // Update the product data in the store
       productData.update((data) => {
@@ -74,7 +82,7 @@
     <td>Img</td>
     <td>Description</td>
     <td>Price</td>
-    <td>qty</td>
+    <td>Qty</td>
   </tr>
   {#each selectData as e, i}
     <tr>
@@ -82,7 +90,7 @@
       <td><img src={e?.img} alt="" width="50px" height="50px" /></td>
       <td>{e?.description}</td>
       <td>{e?.price}</td>
-      <td>{e?.totalqty}</td>
+      <td>{e?.qty}</td>
     </tr>
   {/each}
 </table>
