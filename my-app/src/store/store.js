@@ -84,7 +84,7 @@ function additemHandler(id)
 			return;
 		}
 
-		cartIems.update((val) => [...val, { ...findProduct, cart_quantity: 1 }]);
+		cartIems.update((val) => [...val, { ...findProduct, cart_quantity: +11 }]);
 
 		products.update((val) => {
 			return val.map((product) => {
